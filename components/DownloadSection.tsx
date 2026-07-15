@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
+import { QRCodeSVG } from "qrcode.react";
 import { 
   IoDownloadOutline, 
   IoQrCodeOutline,
@@ -16,6 +18,17 @@ import {
 } from "react-icons/io5";
 
 export default function DownloadSection() {
+  const [downloadUrl, setDownloadUrl] = useState('');
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    // Get the full URL for the APK download
+    if (typeof window !== 'undefined') {
+      const baseUrl = window.location.origin;
+      setDownloadUrl(`${baseUrl}/downloads/visaia_v4_alphatest.apk`);
+    }
+  }, []);
+
   return (
     <section id="download" className="section-px py-20 md:py-28 bg-gradient-to-b from-visaia-cream to-white relative overflow-hidden">
       {/* Background decorative element */}
@@ -86,7 +99,8 @@ export default function DownloadSection() {
 
                 <div className="mt-6 flex flex-col gap-3 max-w-xs">
                   <motion.a
-                    href="/download"
+                    href="/downloads/visaia_v4_alphatest.apk"
+                    download="VISAIA-Mobile-App.apk"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="group/btn inline-flex items-center justify-center gap-2 rounded-full bg-visaia-leaf px-6 py-3.5 text-sm font-semibold text-visaia-black hover:bg-white transition-all shadow-lg shadow-visaia-leaf/20 hover:shadow-visaia-leaf/40"
@@ -131,15 +145,25 @@ export default function DownloadSection() {
                   Application.
                 </p>
 
-                {/* QR Code */}
+                {/* Dynamic QR Code */}
                 <div className="mt-5 flex justify-center">
-                  <div className="relative h-36 w-36 rounded-xl bg-white/5 border border-white/10 p-3 hover:border-visaia-leaf/30 transition-colors">
-                    <Image 
-                      src="/images/qr-code.svg" 
-                      alt="QR code to download VISAIA app" 
-                      fill
-                      className="object-contain p-2"
-                    />
+                  <div className="relative h-36 w-36 rounded-xl bg-white p-3 border border-white/10 hover:border-visaia-leaf/30 transition-colors flex items-center justify-center">
+                    {downloadUrl && (
+                      <QRCodeSVG
+                        value={downloadUrl}
+                        size={120}
+                        level="H"
+                        includeMargin={true}
+                        imageSettings={{
+                          src: "/images/logo.svg",
+                          x: undefined,
+                          y: undefined,
+                          height: 24,
+                          width: 24,
+                          excavate: true,
+                        }}
+                      />
+                    )}
                   </div>
                 </div>
 
@@ -164,6 +188,9 @@ export default function DownloadSection() {
                     <span>•</span>
                     <span>71 MB</span>
                   </div>
+                  <p className="text-white/30 text-[8px] text-center truncate max-w-xs mx-auto">
+                    {downloadUrl}
+                  </p>
                 </div>
               </div>
             </motion.div>

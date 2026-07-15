@@ -20,18 +20,28 @@ import {
   IoQrCodeOutline,
   IoShareOutline
 } from "react-icons/io5";
+import { FaLeaf } from "react-icons/fa";
+import { QRCodeSVG } from "qrcode.react";
 
 export default function DownloadPage() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadComplete, setDownloadComplete] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [platform, setPlatform] = useState<'android' | 'ios' | 'other'>('other');
-  const [showQR, setShowQR] = useState(false);
+  const [showQR, setShowQR] = useState(true);
+  const [imageError, setImageError] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState('');
   
   // Real-time download counter - starts from 0
   const [downloadCount, setDownloadCount] = useState(0);
 
   useEffect(() => {
+    // Get the full URL for the APK download
+    if (typeof window !== 'undefined') {
+      const baseUrl = window.location.origin;
+      setDownloadUrl(`${baseUrl}/downloads/visaia_v4_alphatest.apk`);
+    }
+
     const userAgent = navigator.userAgent || '';
     if (/android/i.test(userAgent)) {
       setPlatform('android');
@@ -71,6 +81,25 @@ export default function DownloadPage() {
       return (num / 1000).toFixed(1) + 'K';
     }
     return num.toString();
+  };
+
+  // Share functionality
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'VISAIA Mobile App',
+          text: 'Download the VISAIA app and start protecting your crops with AI-powered intelligence!',
+          url: downloadUrl,
+        });
+      } catch (error) {
+        console.log('Share cancelled');
+      }
+    } else {
+      // Fallback - copy to clipboard
+      navigator.clipboard.writeText(downloadUrl);
+      alert('Download link copied to clipboard!');
+    }
   };
 
   return (
@@ -119,10 +148,22 @@ export default function DownloadPage() {
             className="lg:col-span-3"
           >
             <div className="bg-white/[0.03] rounded-3xl border border-white/10 p-8 md:p-10">
-              {/* App Header */}
+              {/* App Header with Logo */}
               <div className="flex items-start gap-5 mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-visaia-leaf/10 flex items-center justify-center border border-visaia-leaf/20 shrink-0">
-                  <IoPhonePortraitOutline className="w-8 h-8 text-visaia-leaf" />
+                <div className="w-16 h-16 rounded-2xl bg-visaia-leaf/10 flex items-center justify-center border border-visaia-leaf/20 shrink-0 relative">
+                  {/* Logo as app icon */}
+                  {!imageError ? (
+                    <Image
+                      src="/images/logo.svg"
+                      alt="VISAIA Logo"
+                      width={32}
+                      height={32}
+                      className="object-contain"
+                      onError={() => setImageError(true)}
+                    />
+                  ) : (
+                    <FaLeaf className="w-8 h-8 text-visaia-leaf" />
+                  )}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-start justify-between">
@@ -194,7 +235,10 @@ export default function DownloadPage() {
                     <IoQrCodeOutline className="w-4 h-4" />
                     {showQR ? 'Hide QR' : 'Show QR'}
                   </button>
-                  <button className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors">
+                  <button 
+                    onClick={handleShare}
+                    className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors"
+                  >
                     <IoShareOutline className="w-4 h-4" />
                     Share
                   </button>
@@ -202,7 +246,7 @@ export default function DownloadPage() {
                 <span className="text-gray-500 text-xs">Requires Android 5.0+</span>
               </div>
 
-              {/* QR Code Section */}
+              {/* QR Code Section - Direct APK Download */}
               <AnimatePresence>
                 {showQR && (
                   <motion.div
@@ -212,10 +256,28 @@ export default function DownloadPage() {
                     className="mt-4 p-6 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center"
                   >
                     <div className="text-center">
-                      <div className="w-32 h-32 bg-white rounded-xl mx-auto flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">QR Code</span>
+                      <div className="w-40 h-40 bg-white rounded-xl mx-auto flex items-center justify-center relative p-2">
+                        {downloadUrl && (
+                          <QRCodeSVG
+                            value={downloadUrl}
+                            size={140}
+                            level="H"
+                            includeMargin={true}
+                            imageSettings={{
+                              src: "/images/logo.svg",
+                              x: undefined,
+                              y: undefined,
+                              height: 30,
+                              width: 30,
+                              excavate: true,
+                            }}
+                          />
+                        )}
                       </div>
-                      <p className="text-gray-400 text-xs mt-2">Scan to download</p>
+                      <p className="text-gray-400 text-xs mt-2">Scan to download APK directly</p>
+                      <p className="text-gray-500 text-[10px] mt-1 truncate max-w-xs mx-auto">
+                        {downloadUrl}
+                      </p>
                     </div>
                   </motion.div>
                 )}
