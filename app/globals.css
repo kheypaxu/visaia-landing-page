@@ -1,0 +1,125 @@
+/* Tailwind CSS v4 */
+@import "tailwindcss";
+
+@theme {
+  --color-visaia-black: #0b140c;
+  --color-visaia-dark: #10190f;
+  --color-visaia-darker: #0a110b;
+  --color-visaia-leaf: #8fd14f;
+  --color-visaia-leaf-dark: #4c8a2e;
+  --color-visaia-cream: #f4f6ef;
+  --color-visaia-sage: #c7e3a6;
+  --color-visaia-line: #22301f;
+  --color-visaia-title: #03170E;
+
+  --font-display: var(--font-anton), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-jakarta: var(--font-plus-jakarta), sans-serif;
+
+  --radius-xl2: 1.25rem;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-visaia-cream);
+    color: var(--color-visaia-black);
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .section-px {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .section-px {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-px {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-visaia-leaf);
+  }
+  @media (min-width: 768px) {
+    .eyebrow {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .bg-visaia-black {
+    background-color: var(--color-visaia-black);
+  }
+  .bg-visaia-dark {
+    background-color: var(--color-visaia-dark);
+  }
+  .bg-visaia-darker {
+    background-color: var(--color-visaia-darker);
+  }
+  .bg-visaia-leaf {
+    background-color: var(--color-visaia-leaf);
+  }
+  .bg-visaia-cream {
+    background-color: var(--color-visaia-cream);
+  }
+  .bg-visaia-sage {
+    background-color: var(--color-visaia-sage);
+  }
+  
+  .text-visaia-black {
+    color: var(--color-visaia-black);
+  }
+  .text-visaia-leaf {
+    color: var(--color-visaia-leaf);
+  }
+  .text-visaia-cream {
+    color: var(--color-visaia-cream);
+  }
+  .text-visaia-sage {
+    color: var(--color-visaia-sage);
+  }
+  
+  .border-visaia-line {
+    border-color: var(--color-visaia-line);
+  }
+  
+  .rounded-xl2 {
+    border-radius: var(--radius-xl2);
+  }
+  
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
