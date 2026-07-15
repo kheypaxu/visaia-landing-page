@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/content";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const pathname = usePathname();
@@ -34,8 +35,15 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[999] bg-white/95 backdrop-blur-sm border-b border-visaia-line/10 section-px py-3 flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <span className="inline-block h-3 w-3 rounded-sm bg-visaia-leaf" />
-        <span className="font-display text-lg tracking-wide text-visaia-black">
+        <Image
+          src="/images/logo.svg"
+          alt="VISAIA Logo"
+          width={50}
+          height={50}
+          className="object-contain"
+          priority
+        />
+        <span className="font-display text-3xl tracking-wide text-visaia-black">
           VISAIA
         </span>
       </div>
@@ -60,13 +68,11 @@ export default function Header() {
               }}
             >
               {link.label}
-              {/* Active link underline */}
               <span
                 className={`absolute left-0 right-0 bottom-0 h-0.5 bg-visaia-leaf transition-all duration-300 ${
                   isActive ? "scale-x-100" : "scale-x-0"
                 }`}
               />
-              {/* Hover underline animation */}
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-visaia-leaf scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
           );

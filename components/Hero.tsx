@@ -67,7 +67,7 @@ export default function Hero() {
 
         {/* Make the button clickable */}
         <a
-          href="#download"
+          href="/download"
           className="hero-cta mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-visaia-leaf px-7 py-5 text-sm font-semibold text-visaia-black transition-colors hover:bg-white pointer-events-auto"
         >
           <HiDownload className="h-4 w-4" />

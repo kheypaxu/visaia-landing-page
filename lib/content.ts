@@ -129,8 +129,8 @@ export const faqItems = [
 ];
 
 export const teamMembers = [
-  "Nicole Khey Bangayos",
-  "Joel I. Cabatino Jr.",
+  "Nicole Khey D. Bengaora",
+  "Joel I. Catalino Jr.",
   "Cherry Jean V. Dagohoy",
-  "Phil Angelo Gaen",
+  "Phil Angelo Gain",
 ];
