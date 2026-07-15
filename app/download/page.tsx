@@ -129,7 +129,7 @@ export default function DownloadPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-visaia-leaf/10 border border-visaia-leaf/20 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-visaia-leaf animate-pulse" />
-            <span className="text-visaia-leaf text-xs font-semibold tracking-wider uppercase">Version 4.0 Available</span>
+            <span className="text-visaia-leaf text-xs font-semibold tracking-wider uppercase">Version 1.4 Available</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
             Get the <span className="text-visaia-leaf">VISAIA</span> App
@@ -382,7 +382,7 @@ export default function DownloadPage() {
                 <div className="w-px h-4 bg-white/10" />
                 <div className="flex items-center gap-2">
                   <IoCheckmarkCircleOutline className="w-4 h-4 text-visaia-leaf" />
-                  <span className="text-gray-400 text-xs">v4.0</span>
+                  <span className="text-gray-400 text-xs">v1.4</span>
                 </div>
               </div>
             </div>
@@ -390,7 +390,7 @@ export default function DownloadPage() {
             {/* File Info */}
             <div className="bg-white/[0.03] rounded-2xl border border-white/10 p-4 text-center">
               <p className="text-gray-500 text-xs">
-                File: visaia_v1.4_alphatest.apk • 71 MB • Android Package
+                File: visaia_v1.4_alphatest.apk • 76 MB • Android Package
               </p>
             </div>
           </motion.div>
