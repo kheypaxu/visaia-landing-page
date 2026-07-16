@@ -39,7 +39,7 @@ export default function DownloadPage() {
     // Get the full URL for the APK download
     if (typeof window !== 'undefined') {
       const baseUrl = window.location.origin;
-      setDownloadUrl(`${baseUrl}/downloads/visaia_v1.4_alphatest.apk`);
+      setDownloadUrl(`${baseUrl}/downloads/visaia_v1.5_alphatest.apk`);
     }
 
     const userAgent = navigator.userAgent || '';
@@ -59,7 +59,7 @@ export default function DownloadPage() {
     
     setTimeout(() => {
       const link = document.createElement('a');
-      link.href = '/downloads/visaia_v1.4_alphatest.apk';
+      link.href = '/downloads/visaia_v1.5_alphatest.apk';
       link.download = 'VISAIA-Mobile-App.apk';
       document.body.appendChild(link);
       link.click();
@@ -382,7 +382,7 @@ export default function DownloadPage() {
                 <div className="w-px h-4 bg-white/10" />
                 <div className="flex items-center gap-2">
                   <IoCheckmarkCircleOutline className="w-4 h-4 text-visaia-leaf" />
-                  <span className="text-gray-400 text-xs">v1.4</span>
+                  <span className="text-gray-400 text-xs">v154</span>
                 </div>
               </div>
             </div>
@@ -390,7 +390,7 @@ export default function DownloadPage() {
             {/* File Info */}
             <div className="bg-white/[0.03] rounded-2xl border border-white/10 p-4 text-center">
               <p className="text-gray-500 text-xs">
-                File: visaia_v1.4_alphatest.apk • 76 MB • Android Package
+                File: visaia_v154_alphatest.apk • 76 MB • Android Package
               </p>
             </div>
           </motion.div>
