@@ -25,7 +25,7 @@ export default function DownloadSection() {
     // Get the full URL for the APK download
     if (typeof window !== 'undefined') {
       const baseUrl = window.location.origin;
-      setDownloadUrl(`${baseUrl}/downloads/visaia_v1.5_alphatest.apk`);
+      setDownloadUrl(`${baseUrl}/downloads/visaia_v1.6_alphatest.apk`);
     }
   }, []);
 
@@ -184,7 +184,7 @@ export default function DownloadSection() {
                       Available
                     </span>
                     <span>•</span>
-                    <span>v1.5 Alpha</span>
+                    <span>v1.6 Alpha</span>
                     <span>•</span>
                     <span>71 MB</span>
                   </div>
