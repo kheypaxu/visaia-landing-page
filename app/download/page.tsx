@@ -129,7 +129,7 @@ export default function DownloadPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-visaia-leaf/10 border border-visaia-leaf/20 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-visaia-leaf animate-pulse" />
-            <span className="text-visaia-leaf text-xs font-semibold tracking-wider uppercase">Version 1.4 Available</span>
+            <span className="text-visaia-leaf text-xs font-semibold tracking-wider uppercase">Version 1.7 Available</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
             Get the <span className="text-visaia-leaf">VISAIA</span> App
@@ -169,7 +169,7 @@ export default function DownloadPage() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h2 className="text-white text-xl font-bold">VISAIA Mobile App</h2>
-                      <p className="text-gray-400 text-sm">Version 4.0 Alpha Test</p>
+                      <p className="text-gray-400 text-sm">Version 1.7 Alpha Test</p>
                     </div>
                     <span className="px-3 py-1 rounded-full bg-visaia-leaf/10 text-visaia-leaf text-xs font-semibold border border-visaia-leaf/20">
                       Android
