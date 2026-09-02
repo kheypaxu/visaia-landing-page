@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  IoDownloadOutline, 
+import {
+  IoDownloadOutline,
   IoPhonePortraitOutline,
   IoCheckmarkCircleOutline,
   IoArrowBackOutline,
@@ -31,7 +31,7 @@ export default function DownloadPage() {
   const [showQR, setShowQR] = useState(true);
   const [imageError, setImageError] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState('');
-  
+
   // Real-time download counter - starts from 0
   const [downloadCount, setDownloadCount] = useState(0);
 
@@ -39,7 +39,7 @@ export default function DownloadPage() {
     // Get the full URL for the APK download
     if (typeof window !== 'undefined') {
       const baseUrl = window.location.origin;
-      setDownloadUrl(`${baseUrl}/downloads/visaia_v1.7_alphatest.apk`);
+      setDownloadUrl(`${baseUrl}/downloads/visaia_v1.9_test.apk`);
     }
 
     const userAgent = navigator.userAgent || '';
@@ -53,21 +53,21 @@ export default function DownloadPage() {
   const handleDownload = () => {
     setIsDownloading(true);
     setShowModal(true);
-    
+
     // Increment download count when user downloads
     setDownloadCount(prev => prev + 1);
-    
+
     setTimeout(() => {
       const link = document.createElement('a');
-      link.href = '/downloads/visaia_v1.7_alphatest.apk';
-      link.download = 'VISAIA-Mobile-App.apk';
+      link.href = '/downloads/visaia_v1.9_test.apk';
+      link.download = 'visaia_v1.9_test.apk';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       setIsDownloading(false);
       setDownloadComplete(true);
-      
+
       setTimeout(() => {
         setDownloadComplete(false);
         setShowModal(false);
@@ -113,7 +113,7 @@ export default function DownloadPage() {
       </div>
 
       {/* Back Button */}
-      <Link 
+      <Link
         href="/#precision-modules"
         className="fixed top-6 left-6 z-50 p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all group"
       >
@@ -122,14 +122,14 @@ export default function DownloadPage() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-24">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-visaia-leaf/10 border border-visaia-leaf/20 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-visaia-leaf animate-pulse" />
-            <span className="text-visaia-leaf text-xs font-semibold tracking-wider uppercase">Version 1.7 Available</span>
+            <span className="text-visaia-leaf text-xs font-semibold tracking-wider uppercase">Version 1.9 Available</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
             Get the <span className="text-visaia-leaf">VISAIA</span> App
@@ -169,16 +169,16 @@ export default function DownloadPage() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h2 className="text-white text-xl font-bold">VISAIA Mobile App</h2>
-                      <p className="text-gray-400 text-sm">Version 1.7 Alpha Test</p>
+                      <p className="text-gray-400 text-sm">Version 1.9 Test</p>
                     </div>
                     <span className="px-3 py-1 rounded-full bg-visaia-leaf/10 text-visaia-leaf text-xs font-semibold border border-visaia-leaf/20">
                       Android
                     </span>
                   </div>
                   <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
-                    <span>71.2 MB</span>
+                    <span>75 MB</span>
                     <span className="w-px h-3 bg-white/10" />
-                    <span>Updated: Dec 2026</span>
+                    <span>Updated: 2026</span>
                   </div>
                 </div>
               </div>
@@ -228,14 +228,14 @@ export default function DownloadPage() {
               {/* Quick Actions */}
               <div className="flex items-center justify-between mt-6">
                 <div className="flex items-center gap-4">
-                  <button 
+                  <button
                     onClick={() => setShowQR(!showQR)}
                     className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors"
                   >
                     <IoQrCodeOutline className="w-4 h-4" />
                     {showQR ? 'Hide QR' : 'Show QR'}
                   </button>
-                  <button 
+                  <button
                     onClick={handleShare}
                     className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors"
                   >
@@ -321,7 +321,7 @@ export default function DownloadPage() {
                   "Enhanced GIS mapping",
                   "Multi-language support"
                 ].map((item, index) => (
-                  <motion.li 
+                  <motion.li
                     key={index}
                     initial={{ opacity: 0, x: 5 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -367,7 +367,7 @@ export default function DownloadPage() {
                   <span className="text-gray-400 text-xs">Secure</span>
                 </div>
                 <div className="w-px h-4 bg-white/10" />
-                <motion.div 
+                <motion.div
                   className="flex items-center gap-2"
                   key={downloadCount}
                   initial={{ scale: 1 }}
@@ -390,7 +390,7 @@ export default function DownloadPage() {
             {/* File Info */}
             <div className="bg-white/[0.03] rounded-2xl border border-white/10 p-4 text-center">
               <p className="text-gray-500 text-xs">
-                File: visaia_v1.7_alphatest.apk • 76 MB • Android Package
+                File: visaia_v1.9_test.apk • 75 MB • Android Package
               </p>
             </div>
           </motion.div>
