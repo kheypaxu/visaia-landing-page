@@ -59,8 +59,8 @@ export default function DownloadPage() {
 
     setTimeout(() => {
       const link = document.createElement('a');
-      link.href = '/downloads/visaia_v1.9_test.apk';
-      link.download = 'visaia_v1.9_test.apk';
+      link.href = '/downloads/visaia_2.0.apk';
+      link.download = 'visaia_2.0.apk';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

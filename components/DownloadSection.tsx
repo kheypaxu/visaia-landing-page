@@ -25,7 +25,7 @@ export default function DownloadSection() {
     // Get the full URL for the APK download
     if (typeof window !== 'undefined') {
       const baseUrl = window.location.origin;
-      setDownloadUrl(`${baseUrl}/downloads/visaia_v1.9_test.apk`);
+      setDownloadUrl(`${baseUrl}/downloads/visaia_2.0.apk`);
     }
   }, []);
 
